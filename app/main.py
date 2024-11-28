@@ -68,7 +68,7 @@ def create_todo(todo: TodoCreate, db: Session = Depends(get_db)):
 def read_todos(db: Session = Depends(get_db)):
     return db.query(Todo).all()
 
-@app.get("/todos/{todo_id}", response_model=TodoResponse)
+@app.get("/todo/{todo_id}", response_model=TodoResponse)
 def read_todo(todo_id: int, db: Session = Depends(get_db)):
     db_todo = db.query(Todo).filter(Todo.id == todo_id).first()
     if not db_todo:
